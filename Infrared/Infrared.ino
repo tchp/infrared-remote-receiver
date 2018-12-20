@@ -1,10 +1,10 @@
 #include "IRremote.h"
 
-int recvPin = 11;
-int ledPin = 12;
-int powerPin = 10;
-int buzzPin = 9;
-int state = 0;
+int recvPin = 11; // Y on IR
+int ledPin = 12; // Red LED OP 
+int powerPin = 10; // Green LED OP
+int buzzPin = 9; // Buzz
+int state = 0; 
 //char samsungRed = 3772790473;
 //char samsungGreen = 3772786903;
 
@@ -36,10 +36,10 @@ void loop()
              Serial.println(myDecod.value);
              myRecv.resume();
 
-              if (myDecod.value == 119 || myDecod.value == 2167 && digitalRead(ledPin) == LOW)
+              if (myDecod.value == 12606573 || myDecod.value == 3351024064 && digitalRead(ledPin) == LOW)
                       state = 1;
                 
-              if (myDecod.value == 118 || myDecod.value == 2166 && digitalRead(ledPin) == HIGH)
+              if (myDecod.value == 12606574 || myDecod.value == 1382615993 && digitalRead(ledPin) == HIGH)
                       state = 0;
              
              
